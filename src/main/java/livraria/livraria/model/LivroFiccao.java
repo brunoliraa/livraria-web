@@ -9,4 +9,12 @@ import java.io.Serializable;
 public class LivroFiccao extends Livro implements Serializable {
 
     private String genero;
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
 }

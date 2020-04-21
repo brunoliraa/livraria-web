@@ -17,6 +17,6 @@ public class Endereco implements Serializable {
 
     @OneToOne(mappedBy = "endereco")
     //@JoinColumn(name = "pessoa_id") só precisa ter em uma entidade
-    private Pessoa pessoa;
+    private Cliente cliente;
 
 }

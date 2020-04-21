@@ -11,11 +11,8 @@ public class Pessoa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String cpf;
 
-    @OneToOne //Essa é a forma mais usada de OneToOne
-    @JoinColumn(name = "endereco_id")
-    private Endereco endereco;
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -36,19 +33,6 @@ public class Pessoa implements Serializable {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
 }

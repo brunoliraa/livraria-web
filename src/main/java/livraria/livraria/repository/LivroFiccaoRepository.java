@@ -1,8 +1,8 @@
 package livraria.livraria.repository;
 
 import livraria.livraria.model.LivroFiccao;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Transactional
-public interface LivroFiccaoRepository extends LivroBaseRepository<LivroFiccao> {
+public interface LivroFiccaoRepository extends JpaRepository<LivroFiccao, Long> {
+
 }

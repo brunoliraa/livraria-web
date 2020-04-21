@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>livro ficcao</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+<form action="/livro/tecnico" method="post" class="col-6">
+    <div class="form-group">
+        <label for="titulo">Titulo</label>
+        <input type="text" class="form-control" placeholder="titulo" id="titulo" name="titulo">
+    </div>
+    <div class="form-group">
+        <label for="idioma">idioma</label>
+        <input type="text" class="form-control" placeholder="" id="idioma" name="idioma">
+    </div>
+    <div class="form-group">
+        <label for="areaAtuacao">area atuacao</label>
+        <input type="text" class="form-control" placeholder="" id="areaAtuacao" name="areaAtuacao">
+    </div>
+    <div>
+        <input type="file" name="file">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+</button>
+
+
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+</body>
+</html>

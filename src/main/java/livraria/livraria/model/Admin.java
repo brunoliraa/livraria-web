@@ -14,4 +14,6 @@ public class Admin implements Serializable {
     @Column(unique = true)
     private String login;
     private String senha;
+
+
 }
