@@ -8,19 +8,40 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Autor implements Serializable {
+public class Autor extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false) //não pode ser null
-    private String nome;
+
     private String biografia;
     private String dataNascimento;
-    @ManyToMany(cascade = CascadeType.ALL)
 //    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinTable(name = "autor_livro",joinColumns = @JoinColumn(name = "autor_id",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "livro_id",referencedColumnName ="id"))
+    @ManyToMany(mappedBy = "autores")
     private List<Livro> livros;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getBiografia() {
+        return biografia;
+    }
+
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public List<Livro> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(List<Livro> livros) {
+        this.livros = livros;
+    }
 }

@@ -17,16 +17,14 @@ public class Livro implements Serializable {
     private Long id;
     private String titulo;
     private String idioma;
-    @ManyToMany(mappedBy = "livros")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "autor_livro",joinColumns = @JoinColumn(name = "livro_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "autor_id",referencedColumnName ="id"))
     private List<Autor> autores;
 
     @OneToMany(mappedBy = "livro")// pro jpa saber onde ta a chave estrangeira(joinColumn), nome do atributo
     private List<Edicao> edicoes;
 
-    @ElementCollection
-    @CollectionTable(name = "livro_fotos", joinColumns = @JoinColumn(name = "livro_id"))
-    @Column(name = "fotos")
-    private List<String> imagens;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -72,13 +70,7 @@ public class Livro implements Serializable {
         this.edicoes = edicoes;
     }
 
-    public List<String> getImagens() {
-        return imagens;
-    }
 
-    public void setImagens(List<String> imagens) {
-        this.imagens = imagens;
-    }
 
     @Override
     public String toString() {

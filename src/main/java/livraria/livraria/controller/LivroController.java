@@ -1,5 +1,6 @@
 package livraria.livraria.controller;
 
+import livraria.livraria.model.Autor;
 import livraria.livraria.model.Livro;
 import livraria.livraria.model.LivroFiccao;
 import livraria.livraria.model.LivroTecnico;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+import java.util.Set;
+
 @Controller
 @RequestMapping("/livro")
 public class LivroController {
@@ -21,22 +25,21 @@ public class LivroController {
     @Autowired
     private LivroService livroService;
 
-    @GetMapping
-    public ResponseEntity<Livro> findAll(){
-        return new ResponseEntity(livroRepository.findAll(), HttpStatus.OK);
+    @GetMapping("/all/{imagem}")
+    @ResponseBody
+    public byte[] findAll(@PathVariable String imagem){
+        return livroService.findAll(imagem);
     }
 
     @PostMapping("/ficcao")
-    public ModelAndView saveLivroFiccao(LivroFiccao livro, @RequestParam("file") MultipartFile[] arquivo){
+    public ModelAndView saveLivroFiccao(LivroFiccao livro){
 
-        return livroService.saveLivro(livro, arquivo);
+        return livroService.saveLivro(livro);
     }
     @PostMapping("/tecnico")
     public ModelAndView saveLivroTecnico(LivroTecnico livro){
-        ModelAndView modelAndView = new ModelAndView("index");
-        livroRepository.save(livro);
-        System.out.println(livro);
-        return modelAndView;
+
+        return livroService.saveLivro(livro);
     }
 
     @GetMapping("/{id}")
