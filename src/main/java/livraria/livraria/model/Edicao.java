@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Edicao implements Serializable {
@@ -12,13 +13,13 @@ public class Edicao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate ano;
+    private String ano;
     private int numero;
     private BigDecimal valor;
     private int estoque;
     private int numPaginas;
     private String isbn;
-    private boolean disponivel = false;
+    private boolean disponivel = true;
 
     @ElementCollection
     @CollectionTable(name = "edicao_imagens", joinColumns = @JoinColumn(name = "livro_id"))
@@ -48,11 +49,11 @@ public class Edicao implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getAno() {
+    public String getAno() {
         return ano;
     }
 
-    public void setAno(LocalDate ano) {
+    public void setAno(String ano) {
         this.ano = ano;
     }
 
@@ -134,5 +135,36 @@ public class Edicao implements Serializable {
 
     public void setVendas(List<Venda> vendas) {
         this.vendas = vendas;
+    }
+
+    @Override
+    public String toString() {
+        return "Edicao{" +
+                "id=" + id +
+                ", ano='" + ano + '\'' +
+                ", numero=" + numero +
+                ", valor=" + valor +
+                ", estoque=" + estoque +
+                ", numPaginas=" + numPaginas +
+                ", isbn='" + isbn + '\'' +
+                ", disponivel=" + disponivel +
+                ", imagens=" + imagens +
+                ", livro=" + livro +
+                ", editora=" + editora +
+                ", vendas=" + vendas +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Edicao)) return false;
+        Edicao edicao = (Edicao) o;
+        return Objects.equals(getId(), edicao.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }

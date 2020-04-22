@@ -6,23 +6,21 @@
     <title>edicao</title>
 </head>
 <body>
-<form action="/edicao" th:object="${edicao}" method="post" class="col-6" enctype="multipart/form-data">
+<form action="/edicao"  method="post" class="col-6" enctype="multipart/form-data">
     <div class="form-group">
         <label for="ano">ano</label>
-        <input type="text" th:field="*{ano}" class="form-control" placeholder="titulo" id="ano" name="ano">
+        <input type="text"  class="form-control" placeholder="titulo" id="ano" name="ano">
     </div>
     <div class="form-group">
         <label for="numero">numero</label>
-        <input type="text" th:field="*{numero}" class="form-control" placeholder="" id="numero" name="numero">
+        <input type="text"  class="form-control" placeholder="" id="numero" name="numero">
     </div>
     <div class="form-group">
         <label for="valor">valor</label>
-        <input type="text" th:field="*{valor}" class="form-control" placeholder="" id="valor" name="valor">
+        <input type="text"  class="form-control" placeholder="" id="valor" name="valor">
     </div>
-    <select id="livro" th:value="${edicao.livro}" name="livro" class="form-control">
-        <div th:each="livro : ${livros}">
-            <option><p th:text="${livro}"></p> </option>
-        </div>>
+    <select id="livro" th:object="${livro}" th:field="*{id}"  class="form-control"> <!-- th:value="${livro}"-->
+            <option th:each="l : ${livros}" th:text="${l.titulo}" th:value="${l.id}"></option>
     </select>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

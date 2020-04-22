@@ -1,11 +1,14 @@
 package livraria.livraria.service;
 
 import livraria.livraria.model.Edicao;
+import livraria.livraria.model.Livro;
 import livraria.livraria.repository.EdicaoRepository;
+import livraria.livraria.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,12 +29,17 @@ public class EdicaoService {
     private static String caminhoImagem = "/home/bruno/Documentos/imagens/";
     @Autowired
     private EdicaoRepository edicaoRepository;
+    @Autowired
+    private LivroRepository livroRepository;
+
     private List<String> imagens = new ArrayList<>();
 
-    public ModelAndView save (Edicao edicao){
+    public ModelAndView save (Edicao edicao,Livro livro){
         ModelAndView modelAndView = new ModelAndView("edicao");
+        Livro l = livroRepository.findLivroById(livro.getId());
+        edicao.setLivro(l);
        try{
-//           edicao.setAno(edicao.getAno());
+
            edicaoRepository.save(edicao);
            modelAndView.addObject("edicoes", edicaoRepository.findAll());
        }catch(Exception ex){

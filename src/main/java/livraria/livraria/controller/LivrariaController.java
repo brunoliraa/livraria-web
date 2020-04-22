@@ -36,8 +36,9 @@ public class LivrariaController {
     }
     @GetMapping("/edicao")
     public ModelAndView edicao() {
+        Livro livro = new Livro();
         ModelAndView modelAndView = new ModelAndView("edicao");
-        modelAndView.addObject("edicao", new Edicao());
+        modelAndView.addObject("livro",livro);
         modelAndView.addObject("livros",livroRepository.findAll() );
         return modelAndView;
     }
