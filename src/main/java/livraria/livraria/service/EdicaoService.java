@@ -34,42 +34,44 @@ public class EdicaoService {
 
     private List<String> imagens = new ArrayList<>();
 
-    public ModelAndView save (Edicao edicao,Livro livro){
-        ModelAndView modelAndView = new ModelAndView("edicao");
-        Livro l = livroRepository.findLivroById(livro.getId());
-        edicao.setLivro(l);
-       try{
+//    public ModelAndView save (Edicao edicao,Livro livro){
+//        ModelAndView modelAndView = new ModelAndView("edicao");
+//        Livro l = livroRepository.findLivroById(livro.getId());
+//        edicao.setLivro(l);
+//       try{
+//
+//           edicaoRepository.save(edicao);
+//           modelAndView.addObject("edicoes", edicaoRepository.findAll());
+//       }catch(Exception ex){
+//           ex.printStackTrace();
+//       }
+//        return modelAndView;
+//    }
 
-           edicaoRepository.save(edicao);
-           modelAndView.addObject("edicoes", edicaoRepository.findAll());
-       }catch(Exception ex){
-           ex.printStackTrace();
-       }
+    public ModelAndView saveLivro(Edicao edicao,Livro livro, @RequestParam("file") MultipartFile[] arquivo) {
+        ModelAndView modelAndView = new ModelAndView("index");
+        try {
+            Livro l = livroRepository.findLivroById(livro.getId());
+            edicao.setLivro(l);
+            for (MultipartFile file : arquivo) {
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
+                String data = LocalDateTime.now().format(dateTimeFormatter);
+                String newFileName = data + file.getOriginalFilename();
+                byte[] bytes = file.getBytes();
+                Path caminho = Paths.get(caminhoImagem + newFileName);
+                Files.write(caminho, bytes);
+                imagens.add(newFileName);
+            }
+            edicao.setImagens(imagens);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        edicaoRepository.save(edicao);
+
+
         return modelAndView;
     }
 
-//    public ModelAndView saveLivro(Edicao edicao, @RequestParam("file") MultipartFile[] arquivo) {
-//        ModelAndView modelAndView = new ModelAndView("index");
-//        try {
-//            for (MultipartFile file : arquivo) {
-//                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
-//                String data = LocalDateTime.now().format(dateTimeFormatter);
-//                String newFileName = data + file.getOriginalFilename();
-//                byte[] bytes = file.getBytes();
-//                Path caminho = Paths.get(caminhoImagem + newFileName);
-//                Files.write(caminho, bytes);
-//                imagens.add(newFileName);
-//            }
-//            edicao.setImagens(imagens);
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
-//        edicaoRepository.save(edicao);
-////        livroFiccaoRepository.save(livro);
-//
-//        return modelAndView;
-//    }
-//
 //    public byte[] exibirImagens(@PathVariable String imagem, Model model){
 //        File imagemArquivo = new File(caminhoImagem+imagem);
 //        if (imagem != null || imagem.trim().length() >0){

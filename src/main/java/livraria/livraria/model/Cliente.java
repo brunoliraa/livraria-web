@@ -1,9 +1,6 @@
 package livraria.livraria.model;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,7 +11,7 @@ public class Cliente extends Pessoa implements Serializable{
     private String email;
     private String senha;
     private String cpf;
-    @OneToOne //Essa é a forma mais usada de OneToOne
+    @OneToOne(cascade = CascadeType.ALL) //Essa é a forma mais usada de OneToOne
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
@@ -64,5 +61,17 @@ public class Cliente extends Pessoa implements Serializable{
 
     public void setCompras(List<Venda> compras) {
         this.compras = compras;
+    }
+
+    @Override
+    public String toString() {
+        return  "Cliente{" + "id='"+super.getId() +'\'' +
+                ", nome='"+super.getNome()+ '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", endereco=" + endereco +
+                ", compras=" + compras +
+                '}';
     }
 }
