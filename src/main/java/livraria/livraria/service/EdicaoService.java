@@ -34,22 +34,9 @@ public class EdicaoService {
 
     private List<String> imagens = new ArrayList<>();
 
-//    public ModelAndView save (Edicao edicao,Livro livro){
-//        ModelAndView modelAndView = new ModelAndView("edicao");
-//        Livro l = livroRepository.findLivroById(livro.getId());
-//        edicao.setLivro(l);
-//       try{
-//
-//           edicaoRepository.save(edicao);
-//           modelAndView.addObject("edicoes", edicaoRepository.findAll());
-//       }catch(Exception ex){
-//           ex.printStackTrace();
-//       }
-//        return modelAndView;
-//    }
-
-    public ModelAndView saveLivro(Edicao edicao,Livro livro, @RequestParam("file") MultipartFile[] arquivo) {
-        ModelAndView modelAndView = new ModelAndView("index");
+    public ModelAndView saveEdicao(Edicao edicao,Livro livro, @RequestParam("file") MultipartFile[] arquivo) {
+        ModelAndView modelAndView = new ModelAndView("redirect:livraria/home");
+        modelAndView.addObject("edicoes",edicaoRepository.findAll());
         try {
             Livro l = livroRepository.findLivroById(livro.getId());
             edicao.setLivro(l);
@@ -61,28 +48,50 @@ public class EdicaoService {
                 Path caminho = Paths.get(caminhoImagem + newFileName);
                 Files.write(caminho, bytes);
                 imagens.add(newFileName);
+
             }
             edicao.setImagens(imagens);
+//            arquivo = null;
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         edicaoRepository.save(edicao);
+        imagens.clear();
 
 
         return modelAndView;
     }
 
-//    public byte[] exibirImagens(@PathVariable String imagem, Model model){
-//        File imagemArquivo = new File(caminhoImagem+imagem);
-//        if (imagem != null || imagem.trim().length() >0){
-//            try{
+    public byte[] exibirImagens(@PathVariable String imagem, Model model){
+        File imagemArquivo = new File(caminhoImagem+imagem);
+
+        if (imagem != null || imagem.trim().length() >0){
+            try{
 //                falta retornar todas as imagens do livro certo
-//                model.addAttribute("imagens",edicaoRepository.findAll());
-//                return Files.readAllBytes(imagemArquivo.toPath());
-//            }catch(IOException ex){
-//                ex.printStackTrace();
-//            }
-//        }
-//        return new byte[0];
+
+                model.addAttribute("edicoes",edicaoRepository.findAll());
+                return Files.readAllBytes(imagemArquivo.toPath());
+            }catch(IOException ex){
+                ex.printStackTrace();
+            }
+        }
+        return new byte[0];
+    }
+
+
+
+    //    public ModelAndView save (Edicao edicao,Livro livro){
+//        ModelAndView modelAndView = new ModelAndView("edicao");
+//        Livro l = livroRepository.findLivroById(livro.getId());
+//        edicao.setLivro(l);
+//       try{
+//
+//           edicaoRepository.save(edicao);
+//           modelAndView.addObject("edicoes", edicaoRepository.findAll());
+//       }catch(Exception ex){
+//           ex.printStackTrace();
+//       }
+//        return modelAndView;
 //    }
 }

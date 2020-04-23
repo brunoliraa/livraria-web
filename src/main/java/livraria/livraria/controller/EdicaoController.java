@@ -5,10 +5,8 @@ import livraria.livraria.model.Livro;
 import livraria.livraria.service.EdicaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,6 +20,12 @@ public class EdicaoController {
     @PostMapping
     public ModelAndView saveEdicao(Edicao edicao, Livro livro, @RequestParam("file") MultipartFile[] arquivo){
 
-        return edicaoService.saveLivro(edicao, livro, arquivo);
+        return edicaoService.saveEdicao(edicao, livro, arquivo);
+    }
+
+    @GetMapping("/{imagem}")
+    @ResponseBody
+    public byte[] findAllEdicao(@PathVariable String imagem, Model model){
+        return edicaoService.exibirImagens(imagem, model);
     }
 }

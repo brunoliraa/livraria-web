@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>home</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
 <!--<div th:each="livro : ${livros}" class="card" style="width: 15rem;">-->
@@ -14,7 +16,7 @@
 <!--        <a href="#" class="btn btn-primary">Go somewhere</a>-->
 <!--    </div>-->
 <!--</div>-->
-<div th:each="livro : ${livros}" class="card" style="width: 15rem;">
+<div th:each="edicao: ${edicoes}" class="card" style="width: 15rem;">
     <div class="card-header" >
 
         <div id="demo" class="carousel slide" data-ride="carousel">
@@ -27,9 +29,9 @@
             </ul>
 
             <!-- The slideshow -->
-            <div class="carousel-inner" th:each="imagem: ${livro.imagens}">
-                <div class="carousel-item active">
-                    <img th:src="@{/livro/all/{imagem}(imagem = ${imagem})}" alt="Los Angeles" style="width: 15rem;height: 15rem">
+            <div class="carousel-inner">
+                <div class="carousel-item" th:each="imagem: ${edicao.imagens}">
+                    <img th:src="@{/edicao/{imagem}(imagem = ${imagem})}" th:alt="${edicao.editora}" style="width: 15rem;height: 15rem">
                 </div>
             </div>
 
@@ -45,11 +47,14 @@
 
     </div>
     <div class="card-body">
-        <h5 class="card-title" th:text="${livro.titulo}"></h5>
+        <h5 class="card-title" th:text="${edicao.livro.titulo}"></h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
 </div>
 
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </body>
 </html>
