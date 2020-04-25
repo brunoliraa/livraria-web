@@ -2,6 +2,7 @@ package livraria.livraria.controller;
 
 import livraria.livraria.model.Edicao;
 import livraria.livraria.model.Livro;
+import livraria.livraria.repository.EdicaoRepository;
 import livraria.livraria.service.EdicaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ public class EdicaoController {
 
     @Autowired
     private EdicaoService edicaoService;
+    @Autowired
+    private EdicaoRepository edicaoRepository;
 
     @PostMapping
     public ModelAndView saveEdicao(Edicao edicao, Livro livro, @RequestParam("file") MultipartFile[] arquivo){
@@ -27,5 +30,13 @@ public class EdicaoController {
     @ResponseBody
     public byte[] findAllEdicao(@PathVariable String imagem, Model model){
         return edicaoService.exibirImagens(imagem, model);
+    }
+
+    @GetMapping("/one/{id}")
+    public ModelAndView findById(@PathVariable Long id){
+        ModelAndView modelAndView = new ModelAndView("exibirEdicao");
+        Edicao edicao = edicaoRepository.findEdicaoById(id);
+        modelAndView.addObject("edicao", edicao);
+        return modelAndView;
     }
 }

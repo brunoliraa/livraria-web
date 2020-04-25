@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>carrinho de compras</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+<table id="listapizzas" class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Livros</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="edicao : ${edicoes}" name="listaEdicoes" >
+        <td th:text="${edicao.livro.titulo}"></td>
+        <td th:text="${edicao.valor}"></td>
+        <td th:text="${edicao.quantidade}"> </td>
+        <td><a class="btn btn-secondary" th:href="@{/carrinho/alterarQuantidade/{id}/{acao}(id=${edicao.id},acao=${1})}"  role="button">+</a>
+            <a class="btn btn-secondary" th:href="@{/carrinho/alterarQuantidade/{id}/{acao}(id=${edicao.id},acao=${0})}"  role="button">-</a></td>
+        <td><a class="btn btn-danger" th:href="@{/remover/{id}(id=${edicao.id})}"  role="button">remove</a></td>
+
+    </tr>
+
+    </tbody>
+</table>
+<p>Valor total : <span th:text="${valorTotal}"></span></p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

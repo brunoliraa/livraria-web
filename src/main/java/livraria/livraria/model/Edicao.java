@@ -20,6 +20,7 @@ public class Edicao implements Serializable {
     private int numPaginas;
     private String isbn;
     private boolean disponivel = true;
+    private int quantidade=1;
 
     @ElementCollection
     @CollectionTable(name = "edicao_imagens", joinColumns = @JoinColumn(name = "livro_id"))
@@ -137,6 +138,14 @@ public class Edicao implements Serializable {
         this.vendas = vendas;
     }
 
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
     @Override
     public String toString() {
         return "Edicao{" +
@@ -167,4 +176,5 @@ public class Edicao implements Serializable {
     public int hashCode() {
         return Objects.hash(getId());
     }
+
 }

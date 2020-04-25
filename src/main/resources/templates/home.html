@@ -31,7 +31,7 @@
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item" th:each="imagem: ${edicao.imagens}">
-                    <img th:src="@{/edicao/{imagem}(imagem = ${imagem})}" th:alt="${edicao.editora}" style="width: 15rem;height: 15rem">
+                    <img th:src="@{/edicao/one/{imagem}(imagem = ${imagem})}" th:alt="${edicao.editora}" style="width: 15rem;height: 15rem">
                 </div>
             </div>
 
@@ -49,12 +49,12 @@
     <div class="card-body">
         <h5 class="card-title" th:text="${edicao.livro.titulo}"></h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a th:href="@{/edicao/one/{id}(id= ${edicao.id})}" class="btn btn-primary">Comprar</a>
     </div>
 </div>
 
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

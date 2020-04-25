@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>index</title>
+    <title></title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
-<body>
-
-<a href="/livraria/livrof" class="btn btn-info" role="button">salvar livro ficcao</a>
-<a href="/livraria/livrot" class="btn btn-info" role="button">salvar livro tecnico</a>
+<body th:object="${edicao}">
+<h2>Hello <span th:field="*{livro.titulo}"></span></h2>
 
 
+<a th:href="@{/carrinho/adicionar/{id}(id = ${id})}" class="btn btn-info" role="button">Adicionar ao carrinho</a>
 
+<a th:href="@{/carrinho}" class="btn btn-info" role="button">ir para o carrinho</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
