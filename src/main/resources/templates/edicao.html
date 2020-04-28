@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <title>edicao</title>
 </head>
-<link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min.css">
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <body>
 <form action="/edicao"  method="post" class="col-6" enctype="multipart/form-data">
     <div class="form-group">
@@ -24,14 +26,14 @@
     <select id="livro" th:object="${livro}" th:field="*{id}"  class="form-control">
             <option th:each="l : ${livros}" th:text="${l.titulo}" th:value="${l.id}"></option>
     </select>
-
+    <select id="editora" th:object="${editora}" th:field="*{id}"  class="form-control">
+        <option th:each="ed : ${editoras}" th:text="${ed.nome}" th:value="${ed.id}"></option>
+    </select>
     <div>
         <input type="file" name="file" multiple="multiple">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>

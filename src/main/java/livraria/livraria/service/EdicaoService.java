@@ -1,8 +1,10 @@
 package livraria.livraria.service;
 
 import livraria.livraria.model.Edicao;
+import livraria.livraria.model.Editora;
 import livraria.livraria.model.Livro;
 import livraria.livraria.repository.EdicaoRepository;
+import livraria.livraria.repository.EditoraRepository;
 import livraria.livraria.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,15 +33,19 @@ public class EdicaoService {
     private EdicaoRepository edicaoRepository;
     @Autowired
     private LivroRepository livroRepository;
+    @Autowired
+    private EditoraRepository editoraRepository;
 
     private List<String> imagens = new ArrayList<>();
 
-    public ModelAndView saveEdicao(Edicao edicao,Livro livro, @RequestParam("file") MultipartFile[] arquivo) {
+    public ModelAndView saveEdicao(Edicao edicao, Livro livro, Editora editora, @RequestParam("file") MultipartFile[] arquivo) {
         ModelAndView modelAndView = new ModelAndView("redirect:livraria/home");
         modelAndView.addObject("edicoes",edicaoRepository.findAll());
         try {
             Livro l = livroRepository.findLivroById(livro.getId());
             edicao.setLivro(l);
+            Editora ed = editoraRepository.findEditoraById(editora.getId());
+            edicao.setEditora(ed);
             for (MultipartFile file : arquivo) {
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
                 String data = LocalDateTime.now().format(dateTimeFormatter);

@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>home</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <!--<div th:each="livro : ${livros}" class="card" style="width: 15rem;">-->
@@ -31,7 +33,8 @@
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item" th:each="imagem: ${edicao.imagens}">
-                    <img th:src="@{/edicao/one/{imagem}(imagem = ${imagem})}" th:alt="${edicao.editora}" style="width: 15rem;height: 15rem">
+<!--                    <img th:src="@{/edicao/one/{id}(id =${edicao.id},imagem = ${imagem})}"-->
+<!--                         th:alt="${edicao.editora}" style="width: 15rem;height: 15rem">-->
                 </div>
             </div>
 
@@ -53,8 +56,6 @@
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>

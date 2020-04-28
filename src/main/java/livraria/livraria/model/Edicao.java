@@ -31,7 +31,7 @@ public class Edicao implements Serializable {
     @JoinColumn(name = "livro_id") // porque é nessa tabela que vai ter a chave estrangeira que referencia Livro
     private Livro livro;
 
-    @ManyToOne //Uma editora pode publicar muitas edições
+    @ManyToOne(cascade = CascadeType.ALL) //Uma editora pode publicar muitas edições
     @JoinColumn(name = "editora_id")
     private Editora editora;
 

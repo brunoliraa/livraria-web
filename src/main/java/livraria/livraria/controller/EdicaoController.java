@@ -1,6 +1,7 @@
 package livraria.livraria.controller;
 
 import livraria.livraria.model.Edicao;
+import livraria.livraria.model.Editora;
 import livraria.livraria.model.Livro;
 import livraria.livraria.repository.EdicaoRepository;
 import livraria.livraria.service.EdicaoService;
@@ -21,9 +22,9 @@ public class EdicaoController {
     private EdicaoRepository edicaoRepository;
 
     @PostMapping
-    public ModelAndView saveEdicao(Edicao edicao, Livro livro, @RequestParam("file") MultipartFile[] arquivo){
+    public ModelAndView saveEdicao(Edicao edicao, Livro livro, Editora editora, @RequestParam("file") MultipartFile[] arquivo){
 
-        return edicaoService.saveEdicao(edicao, livro, arquivo);
+        return edicaoService.saveEdicao(edicao, livro,editora, arquivo);
     }
 
     @GetMapping("/{imagem}")
