@@ -34,6 +34,56 @@
     </tbody>
 </table>
 <p>Valor total : <span th:text="${valorTotal}"></span></p>
+<p>Valor total : <span th:text="${valorTotal}"></span></p>
+<p>Valor total : <span th:text="${valorTotal}"></span></p>
+
+<form action="/carrinho/frete" method="post" class="col-3" style="float: right">
+    <div class="form-group">
+        <label for="sCepDestino">informe o cep</label>
+        <input type="text" class="form-control" placeholder="CEP" id="sCepDestino" name="sCepDestino">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="nCdEmpresa" name="nCdEmpresa" value="">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="sDsSenha" name="sDsSenha" value="">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="nCdServico" name="nCdServico" value="04510">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="sCepOrigem" name="sCepOrigem" value="08090284">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="nVlPeso" name="nVlPeso" value="1">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="nCdFormato" name="nCdFormato" value="1">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="nVlComprimento" name="nVlComprimento" value="55">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="nVlAltura" name="nVlAltura" value="60">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="nVlLargura" name="nVlLargura" value="60">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="nVlDiametro" name="nVlDiametro" value="20">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="sCdMaoPropria" name="sCdMaoPropria" value="S">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="nVlValorDeclarado" name="nVlValorDeclarado" value="0">
+    </div>
+    <div class="form-group">
+        <input type="hidden" class="form-control" placeholder="" id="sCdAvisoRecebimento" name="sCdAvisoRecebimento" value="N">
+    </div>
+    <button type="submit" class="btn btn-primary">CONSULTAR</button>
+
+</form>
 
 
 </body>

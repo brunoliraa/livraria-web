@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+      
+    <!--
+
+Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.11 
+Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
+Gerado em: 2020.04.28 às 09:47:08 AM BRT 
+
+  -->
+      
+    <bindings xmlns:tns="http://tempuri.org/" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="livraria.livraria.soap"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoPrazo">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoPrazo"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoPrazoResponse">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoPrazoResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:cResultado">
+                  
+            <class ref="livraria.livraria.soap.CResultado"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoPrazoData">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoPrazoData"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoPrazoDataResponse">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoPrazoDataResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoPrazoRestricao">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoPrazoRestricao"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoPrazoRestricaoResponse">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoPrazoRestricaoResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPreco">
+                  
+            <class ref="livraria.livraria.soap.CalcPreco"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoResponse">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoData">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoData"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoDataResponse">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoDataResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrazo">
+                  
+            <class ref="livraria.livraria.soap.CalcPrazo"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrazoResponse">
+                  
+            <class ref="livraria.livraria.soap.CalcPrazoResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrazoData">
+                  
+            <class ref="livraria.livraria.soap.CalcPrazoData"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrazoDataResponse">
+                  
+            <class ref="livraria.livraria.soap.CalcPrazoDataResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrazoRestricao">
+                  
+            <class ref="livraria.livraria.soap.CalcPrazoRestricao"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrazoRestricaoResponse">
+                  
+            <class ref="livraria.livraria.soap.CalcPrazoRestricaoResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoFAC">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoFAC"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcPrecoFACResponse">
+                  
+            <class ref="livraria.livraria.soap.CalcPrecoFACResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcDataMaxima">
+                  
+            <class ref="livraria.livraria.soap.CalcDataMaxima"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:CalcDataMaximaResponse">
+                  
+            <class ref="livraria.livraria.soap.CalcDataMaximaResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:cResultadoObjeto">
+                  
+            <class ref="livraria.livraria.soap.CResultadoObjeto"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:ListaServicos">
+                  
+            <class ref="livraria.livraria.soap.ListaServicos"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:ListaServicosResponse">
+                  
+            <class ref="livraria.livraria.soap.ListaServicosResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:cResultadoServicos">
+                  
+            <class ref="livraria.livraria.soap.CResultadoServicos"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:ListaServicosSTAR">
+                  
+            <class ref="livraria.livraria.soap.ListaServicosSTAR"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:ListaServicosSTARResponse">
+                  
+            <class ref="livraria.livraria.soap.ListaServicosSTARResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:VerificaModal">
+                  
+            <class ref="livraria.livraria.soap.VerificaModal"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:VerificaModalResponse">
+                  
+            <class ref="livraria.livraria.soap.VerificaModalResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:cResultadoModal">
+                  
+            <class ref="livraria.livraria.soap.CResultadoModal"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getVersao">
+                  
+            <class ref="livraria.livraria.soap.GetVersao"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:getVersaoResponse">
+                  
+            <class ref="livraria.livraria.soap.GetVersaoResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:versao">
+                  
+            <class ref="livraria.livraria.soap.Versao"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:ArrayOfCServico">
+                  
+            <class ref="livraria.livraria.soap.ArrayOfCServico"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:cServico">
+                  
+            <class ref="livraria.livraria.soap.CServico"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:ArrayOfCObjeto">
+                  
+            <class ref="livraria.livraria.soap.ArrayOfCObjeto"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:cObjeto">
+                  
+            <class ref="livraria.livraria.soap.CObjeto"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:ArrayOfCServicosCalculo">
+                  
+            <class ref="livraria.livraria.soap.ArrayOfCServicosCalculo"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:cServicosCalculo">
+                  
+            <class ref="livraria.livraria.soap.CServicosCalculo"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:ArrayOfCModal">
+                  
+            <class ref="livraria.livraria.soap.ArrayOfCModal"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:cModal">
+                  
+            <class ref="livraria.livraria.soap.CModal"/>
+                
+        </bindings>
+          
+    </bindings>
+    
+</bindings>

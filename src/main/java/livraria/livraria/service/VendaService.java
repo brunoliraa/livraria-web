@@ -4,12 +4,17 @@ import livraria.livraria.model.Edicao;
 import livraria.livraria.model.Venda;
 import livraria.livraria.repository.EdicaoRepository;
 import livraria.livraria.repository.VendaRepository;
+import livraria.livraria.soap.CalcPrecoPrazo;
+import livraria.livraria.soap.CalcPrecoPrazoResponse;
+import livraria.livraria.soapClient.SoapClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ws.soap.client.SoapFaultClientException;
 
+import javax.xml.bind.JAXBException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +26,8 @@ public class VendaService {
     private VendaRepository vendaRepository;
     @Autowired
     private EdicaoRepository edicaoRepository;
+    @Autowired
+    private SoapClient client;
 
     List<Edicao> edicaoList = new ArrayList<>();
     Venda venda = new Venda();
@@ -32,6 +39,8 @@ public class VendaService {
         ModelAndView modelAndView = new ModelAndView("carrinho");
         modelAndView.addObject("edicoes", edicaoList);
         modelAndView.addObject("valorTotal", venda.getValorTotal());
+//        modelAndView.addObject("frete",new CalcPrecoPrazo());
+
         return modelAndView;
     }
 
@@ -109,6 +118,23 @@ public class VendaService {
 
                 break;
             }
+        }
+        return getCarrinho();
+
+    }
+
+    public ModelAndView calcularFrete(CalcPrecoPrazo calcPrecoPrazo){
+        ModelAndView modelAndView = new ModelAndView("carrinho");
+        CalcPrecoPrazo c = calcPrecoPrazo;
+        System.out.println(calcPrecoPrazo.getSCepOrigem());
+        try{
+            CalcPrecoPrazoResponse d= client.callWebService(c,"http://tempuri.org/CalcPrecoPrazo");
+//            modelAndView.addObject("frete", d);
+            modelAndView.addObject("edicoes", edicaoList);
+            modelAndView.addObject("valorTotal", venda.getValorTotal());
+
+        }catch (SoapFaultClientException ex){
+            ex.printStackTrace();
         }
         return getCarrinho();
 
