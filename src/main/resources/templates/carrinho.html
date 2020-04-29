@@ -85,6 +85,12 @@
 
 </form>
 
+<div class="container">
+    <form method="post"  action="/pay">
+            <input type="hidden" id="valorTotal" name="valorTotal" th:value="${valorTotal}">
+        <button type="submit"> <img src="./img/paypal.png" alt="paypal"></button>
+    </form>
+</div>
 
 </body>
 </html>
