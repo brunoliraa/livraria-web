@@ -29,16 +29,20 @@ public class LivrariaController {
     public String getIndex() {
         return "index";
     }
+    @GetMapping("/admin")
+    public String getHomeAdmin() {
+        return "admin/home";
+    }
 
     @GetMapping("/livrof")
     public ModelAndView getLivroF() {
-        ModelAndView modelAndView = new ModelAndView("livrof");
+        ModelAndView modelAndView = new ModelAndView("admin/livroficcao");
         modelAndView.addObject("livro",new Livro());
         return modelAndView;
     }
     @GetMapping("/livrot")
     public ModelAndView getLivroT() {
-        ModelAndView modelAndView = new ModelAndView("livrot");
+        ModelAndView modelAndView = new ModelAndView("admin/livrotecnico");
         modelAndView.addObject("autor",new Autor());
         return modelAndView;
     }
@@ -46,7 +50,7 @@ public class LivrariaController {
     public ModelAndView edicao() {
         Livro livro = new Livro();
         Editora editora = new Editora();
-        ModelAndView modelAndView = new ModelAndView("edicao");
+        ModelAndView modelAndView = new ModelAndView("admin/edicao");
         modelAndView.addObject("livro",livro);
         modelAndView.addObject("editora", editora);
         modelAndView.addObject("editoras", editoraRepository.findAll());
