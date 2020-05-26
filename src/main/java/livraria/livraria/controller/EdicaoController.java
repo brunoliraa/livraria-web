@@ -29,8 +29,9 @@ public class EdicaoController {
 
     @GetMapping("/{imagem}")
     @ResponseBody
-    public byte[] findAllEdicao(@PathVariable String imagem, Model model){
-        return edicaoService.exibirImagens(imagem, model);
+    public byte[] findAllEdicao(@PathVariable String imagem, Model model){ //Model model
+        model.addAttribute("edicoes",edicaoRepository.findAll());
+        return edicaoService.exibirImagens(imagem);
     }
 
     @GetMapping("/one/{id}")
@@ -39,5 +40,15 @@ public class EdicaoController {
         Edicao edicao = edicaoRepository.findEdicaoById(id);
         modelAndView.addObject("edicao", edicao);
         return modelAndView;
+    }
+
+    @GetMapping("/one/{id}/{imagem}")
+    @ResponseBody
+    public byte[] findByIdImagem(@PathVariable Long id, @PathVariable String imagem){
+        ModelAndView modelAndView = new ModelAndView("exibirEdicao");
+        Edicao edicao = edicaoRepository.findEdicaoById(id);
+        modelAndView.addObject("edicao", edicao);
+//        return edicaoService.exibirImagens(edicao.getImagens().get(0));
+        return edicaoService.exibirImagens(imagem);
     }
 }

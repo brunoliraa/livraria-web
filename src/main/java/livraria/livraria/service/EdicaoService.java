@@ -24,6 +24,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -43,6 +44,7 @@ public class EdicaoService {
         modelAndView.addObject("edicoes",edicaoRepository.findAll());
         try {
             Livro l = livroRepository.findLivroById(livro.getId());
+            edicao.setId(null);
             edicao.setLivro(l);
             Editora ed = editoraRepository.findEditoraById(editora.getId());
             edicao.setEditora(ed);
@@ -62,6 +64,7 @@ public class EdicaoService {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
         edicaoRepository.save(edicao);
         imagens.clear();
 
@@ -69,14 +72,14 @@ public class EdicaoService {
         return modelAndView;
     }
 
-    public byte[] exibirImagens(@PathVariable String imagem, Model model){
+    public byte[] exibirImagens(@PathVariable String imagem){
         File imagemArquivo = new File(caminhoImagem+imagem);
 
         if (imagem != null || imagem.trim().length() >0){
             try{
 //                falta retornar todas as imagens do livro certo
 
-                model.addAttribute("edicoes",edicaoRepository.findAll());
+//                model.addAttribute("edicoes",edicaoRepository.findAll());
                 return Files.readAllBytes(imagemArquivo.toPath());
             }catch(IOException ex){
                 ex.printStackTrace();
@@ -84,6 +87,7 @@ public class EdicaoService {
         }
         return new byte[0];
     }
+
 
 
 

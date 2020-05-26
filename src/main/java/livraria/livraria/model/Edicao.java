@@ -27,7 +27,7 @@ public class Edicao implements Serializable {
     @Column(name = "imagens")
     private List<String> imagens;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE })
     @JoinColumn(name = "livro_id") // porque é nessa tabela que vai ter a chave estrangeira que referencia Livro
     private Livro livro;
 

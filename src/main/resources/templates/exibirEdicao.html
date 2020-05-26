@@ -15,6 +15,9 @@
 
 <a th:href="@{/carrinho/adicionar/{id}(id = ${edicao.id})}" class="btn btn-info" role="button">Adicionar ao carrinho</a>
 
+<div th:each="imagem : ${edicao.imagens}">
+<img th:src="@{/edicao/one/{id}/{imagem}(id =${edicao.id} , imagem =${imagem})}" alt="imagem">
+</div>
 <a th:href="@{/carrinho}" class="btn btn-info" role="button">ir para o carrinho</a>
 
 </body>

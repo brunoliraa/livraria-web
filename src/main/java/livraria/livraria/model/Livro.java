@@ -1,6 +1,8 @@
 package livraria.livraria.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +17,8 @@ public class Livro implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(message = "titulo não pode ser nulo")
+    @NotBlank(message = "titulo em branco")
     private String titulo;
     private String idioma;
     @ManyToMany(cascade = CascadeType.ALL)

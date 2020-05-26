@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
 
@@ -32,14 +35,13 @@ public class LivroController {
     }
 
     @PostMapping("/ficcao")
-    public ModelAndView saveLivroFiccao(LivroFiccao livro){
-
-        return livroService.saveLivro(livro);
+    public ModelAndView saveLivroFiccao(@Valid LivroFiccao livro, BindingResult result){
+        return livroService.saveLivro(livro, result);
     }
     @PostMapping("/tecnico")
-    public ModelAndView saveLivroTecnico(LivroTecnico livro){
-
-        return livroService.saveLivro(livro);
+    public ModelAndView saveLivroTecnico(@Valid LivroTecnico livro, BindingResult result
+            , RedirectAttributes attributes){
+        return livroService.saveLivro(livro, result);
     }
 
     @GetMapping("/{id}")

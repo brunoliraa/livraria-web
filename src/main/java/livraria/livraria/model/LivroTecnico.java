@@ -9,4 +9,19 @@ import java.io.Serializable;
 public class LivroTecnico extends Livro implements Serializable {
 
     private String areaAtuacao;
+
+    public String getAreaAtuacao() {
+        return areaAtuacao;
+    }
+
+    public void setAreaAtuacao(String areaAtuacao) {
+        this.areaAtuacao = areaAtuacao;
+    }
+
+    @Override
+    public String toString() {
+        return "LivroTecnico{" +
+                "areaAtuacao='" + areaAtuacao + '\'' +
+                '}';
+    }
 }

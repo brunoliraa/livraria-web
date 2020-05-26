@@ -19,43 +19,14 @@
 <!--    </div>-->
 <!--</div>-->
 <div th:each="edicao: ${edicoes}" class="card" style="width: 15rem;">
-    <div class="card-header" >
-
-        <div id="demo" class="carousel slide" data-ride="carousel">
-
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                <div class="carousel-item" th:each="imagem: ${edicao.imagens}">
-<!--                    <img th:src="@{/edicao/one/{id}(id =${edicao.id},imagem = ${imagem})}"-->
-<!--                         th:alt="${edicao.editora}" style="width: 15rem;height: 15rem">-->
-                </div>
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-
-        </div>
-
-    </div>
+    <img class="card-img-top" th:src="@{/edicao/{imagem}(imagem = ${edicao.imagens[0]})}" alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title" th:text="${edicao.livro.titulo}"></h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text">Some quick example text to </p>
         <a th:href="@{/edicao/one/{id}(id= ${edicao.id})}" class="btn btn-primary">Comprar</a>
     </div>
 </div>
 
-
+<script src="script.js"></script>
 </body>
 </html>

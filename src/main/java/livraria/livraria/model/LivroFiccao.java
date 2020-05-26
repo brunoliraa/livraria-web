@@ -17,4 +17,11 @@ public class LivroFiccao extends Livro implements Serializable {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
+    @Override
+    public String toString() {
+        return "LivroFiccao{" +super.getTitulo()+
+                " genero='" + genero + '\'' +
+                '}';
+    }
 }
