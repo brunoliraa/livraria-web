@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/livraria")
+@RequestMapping("/admin")
 public class LivrariaController {
 
     @Autowired
@@ -29,10 +29,11 @@ public class LivrariaController {
     public String getIndex() {
         return "index";
     }
-    @GetMapping("/admin")
+    @GetMapping("/livraria")
     public String getHomeAdmin() {
         return "admin/home";
     }
+
 
     @GetMapping("/livrof")
     public ModelAndView getLivroF() {

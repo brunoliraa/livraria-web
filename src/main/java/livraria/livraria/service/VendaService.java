@@ -1,5 +1,6 @@
 package livraria.livraria.service;
 
+import livraria.livraria.model.CServico;
 import livraria.livraria.model.Edicao;
 import livraria.livraria.model.Venda;
 import livraria.livraria.repository.EdicaoRepository;
@@ -28,6 +29,8 @@ public class VendaService {
     private EdicaoRepository edicaoRepository;
     @Autowired
     private SoapClient client;
+    @Autowired
+    private ConvertXmlToJavaObject convertXmlToJavaObject;
 
     List<Edicao> edicaoList = new ArrayList<>();
     Venda venda = new Venda();
@@ -126,10 +129,13 @@ public class VendaService {
     public ModelAndView calcularFrete(CalcPrecoPrazo calcPrecoPrazo){
         ModelAndView modelAndView = new ModelAndView("carrinho");
         CalcPrecoPrazo c = calcPrecoPrazo;
-        System.out.println(calcPrecoPrazo.getSCepOrigem());
+//        System.out.println(calcPrecoPrazo.getSCepOrigem());
         try{
             CalcPrecoPrazoResponse d= client.callWebService(c,"http://tempuri.org/CalcPrecoPrazo");
 //            modelAndView.addObject("frete", d);
+//            convertXmlToJavaObject.convert(d);
+            livraria.livraria.model.CalcPrecoPrazoResponse calc =convertXmlToJavaObject.convert(d);
+            System.out.println(calc.getServicos().getValor());
             modelAndView.addObject("edicoes", edicaoList);
             modelAndView.addObject("valorTotal", venda.getValorTotal());
 

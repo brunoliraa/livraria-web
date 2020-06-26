@@ -32,7 +32,7 @@ Gerado em: 2020.04.28 às 09:47:08 AM BRT
             
         <bindings if-exists="true" scd="~tns:cResultado">
                   
-            <class ref="livraria.livraria.soap.CResultado"/>
+            <class ref="livraria.livraria.soap.CalcPrecoPrazoResult"/>
                 
         </bindings>
             

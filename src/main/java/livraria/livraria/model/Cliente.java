@@ -1,11 +1,17 @@
 package livraria.livraria.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Cliente extends Pessoa implements Serializable{
+public class Cliente extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String email;
@@ -15,10 +21,19 @@ public class Cliente extends Pessoa implements Serializable{
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id")
     private List<Venda> compras;
 
+//    @Transient
+//    private Collection<GrantedAuthority> permissoes = new ArrayList<>();
+
+    public Cliente(){
+    };
+
+//    public Cliente(List<GrantedAuthority> authorityListUser){
+//        this.permissoes = authorityListUser;
+//    }
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -63,6 +78,14 @@ public class Cliente extends Pessoa implements Serializable{
         this.compras = compras;
     }
 
+//    public Collection<GrantedAuthority> getPermissoes() {
+//        return permissoes;
+//    }
+//
+//    public void setPermissoes(Collection<GrantedAuthority> permissoes) {
+//        this.permissoes = permissoes;
+//    }
+
     @Override
     public String toString() {
         return  "Cliente{" + "id='"+super.getId() +'\'' +
@@ -74,4 +97,11 @@ public class Cliente extends Pessoa implements Serializable{
                 ", compras=" + compras +
                 '}';
     }
+
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return permissoes;
+//    }
+
+
 }

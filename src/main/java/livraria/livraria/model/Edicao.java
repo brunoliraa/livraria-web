@@ -35,7 +35,7 @@ public class Edicao implements Serializable {
     @JoinColumn(name = "editora_id")
     private Editora editora;
 
-    @ManyToMany(mappedBy = "edicoes")
+    @ManyToMany(mappedBy = "edicoes",fetch = FetchType.EAGER)
     private List<Venda> vendas;
 
     public static long getSerialVersionUID() {

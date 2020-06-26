@@ -18,7 +18,45 @@
 <div th:each="imagem : ${edicao.imagens}">
 <img th:src="@{/edicao/one/{id}/{imagem}(id =${edicao.id} , imagem =${imagem})}" alt="imagem">
 </div>
-<a th:href="@{/carrinho}" class="btn btn-info" role="button">ir para o carrinho</a>
+<div id="caracteristicas">
 
+    <ul class="list-group">
+        <li class="list-group-item" th:text="${edicao.ano}"></li>
+        <li class="list-group-item" th:text="${edicao.editora}"></li>
+        <li class="list-group-item" th:text="${edicao.numero}"></li>
+<!--        <ul class="list-group" >-->
+        <li class="list-group-item" th:each="autor : ${edicao.livro.autores}"> <span th:text="${autor.nome}"></span></li>
+<!--        </ul>-->
+    </ul>
+
+</div>
+<a th:href="@{/carrinho}" class="btn btn-info" role="button">ir para o carrinho</a>
+<div class="container">
+    <h2>Caracteristicas</h2>
+    <table class="table">
+
+        <tbody>
+        <tr>
+            <td>ano de lançamento</td>
+            <td th:text="${edicao.ano}"></td>
+        </tr>
+        <tr>
+            <td>editora</td>
+            <td th:text="${edicao.editora}"></td>
+        </tr>
+        <tr>
+            <td>numero da edição</td>
+            <td th:text="${edicao.numero}"></td>
+        </tr>
+        <tr>
+            <td>autores</td>
+            <td th:each="autor : ${edicao.livro.autores}">
+                <span th:text="${autor.nome}"></span>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
