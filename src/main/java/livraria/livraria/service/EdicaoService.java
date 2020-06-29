@@ -40,7 +40,7 @@ public class EdicaoService {
     private List<String> imagens = new ArrayList<>();
 
     public ModelAndView saveEdicao(Edicao edicao, Livro livro, Editora editora, @RequestParam("file") MultipartFile[] arquivo) {
-        ModelAndView modelAndView = new ModelAndView("redirect:livraria/home");
+        ModelAndView modelAndView = new ModelAndView("redirect:admin/livraria");
         modelAndView.addObject("edicoes",edicaoRepository.findAll());
         try {
             Livro l = livroRepository.findLivroById(livro.getId());

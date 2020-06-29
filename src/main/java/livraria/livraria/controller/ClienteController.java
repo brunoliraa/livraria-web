@@ -1,7 +1,6 @@
 package livraria.livraria.controller;
 
 import livraria.livraria.model.Cliente;
-import livraria.livraria.model.Pessoa;
 import livraria.livraria.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,7 @@ public class ClienteController {
 
     @GetMapping
     public ModelAndView clienteCadastro(){
-        ModelAndView modelAndView = new ModelAndView("cliente");
+        ModelAndView modelAndView = new ModelAndView("cliente/cliente");
         Cliente cliente = new Cliente();
         modelAndView.addObject("cliente", cliente);
         return modelAndView;

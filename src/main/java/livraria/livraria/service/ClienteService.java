@@ -4,6 +4,8 @@ import livraria.livraria.model.Cliente;
 import livraria.livraria.repository.ClienteRepository;
 import livraria.livraria.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,4 +27,11 @@ public class ClienteService {
         return modelAndView;
     }
 
+    public Cliente buscarClienteLogado() {
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User)
+                SecurityContextHolder
+                        .getContext()
+                        .getAuthentication().getPrincipal();
+        return clienteRepository.findByEmail(principal.getUsername());
+    }
 }

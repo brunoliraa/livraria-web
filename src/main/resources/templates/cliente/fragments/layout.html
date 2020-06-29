@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout=”http://www.ultraq.net.nz/thymeleaf/layout”
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+
+    <link href="/css/cliente.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="index.html">liv</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span><!--icone do button togler-->
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto"><!--ml = margin left auto-->
+            <li class="nav-item">
+                <a class="nav-link" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cliente" role="button">Cadastre-se</a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link" data-toggle="modal" data-target="#modalLogin">Login</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+
+<section class="layout-content" layout:fragment="header-footer">
+    principal
+</section>
+
+<div id="contact" class="offset">
+    <footer>
+        <div class="row justify-content-center">
+            <div class="col-md-5 text-center">
+<!--                <img src="img/nuno.png">-->
+                <p>At our course is a collection of design and development solutions that
+                    represent everything your businessneeds to compet in the modern marketplace.
+                </p>
+                <strong>Contact info</strong>
+                <p>(888)888-8888<br>email@nuno.com</p>
+                <a href="#" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <hr class="socket">&copy;Nuno theme.
+        </div><!--end of row-->
+
+    </footer>
+
+</div>
+
+<!-- Modal Login -->
+<div class="modal fade" id="modalLogin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Entre na sua conta</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/autent" method="post">
+                    <div class="form-group">
+                        <label for="cliente">Email address:</label>
+                        <input type="email" class="form-control" placeholder="Enter email" name="cliente" id="cliente">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" placeholder="Enter password"  name="password" id="password">
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"> Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <a href="#modalCadastrar" data-toggle="modal" data-target="#modalLogin">
+                    Não tem uma conta? Cadastre-se grátis</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+</body>
+</html>

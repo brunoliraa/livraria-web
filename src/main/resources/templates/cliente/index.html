@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+
+
+
+<section id="corpo" class="layout-content" layout:fragment="header-footer">
+<!--    <img src="./img/paypal.png" alt="paypal">-->
+<!--    <img src="./img/pizzaria.jpg" alt="paypal">-->
+
+    <!--Start of image slider-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
+         data-interval="7000">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox"><!--optional for people with de screen readers-->
+            <!--slide 1-->
+            <div class="carousel-item active" style="background-image: url(./img/pizzaria.jpg);">
+                <!--<img src="img/computers.png">-->
+                <div class="carousel-caption text-center">
+                    <h1>Welcome to nuno</h1>
+                    <h3>Animated Bootstrap theme</h3>
+                    <a class="btn btn-outline-light btn-lg" href="#course"> get Started</a>
+                </div>
+            </div>
+            <!-- Slide 2-->
+            <div class="carousel-item" style="background-image: url(./img/ambiente.jpg);">
+                <!--<img src="img/computers-2.png">-->
+            </div>
+            <div class="carousel-item" style="background-image: url(./img/pizza.jpg);">
+                <!--<img src="img/computers-2.png">-->
+            </div>
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
+    <!--end of image slider-->
+    <div th:each="edicao: ${edicoes}" class="card" style="width: 15rem;">
+        <img class="card-img-top" th:src="@{/edicao/{imagem}(imagem = ${edicao.imagens[0]})}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${edicao.livro.titulo}"></h5>
+            <p class="card-text">Some quick example text to </p>
+            <a th:href="@{/edicao/one/{id}(id= ${edicao.id})}" class="btn btn-primary">Comprar</a>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

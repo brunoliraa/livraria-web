@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping
 public class LivrariaController {
 
     @Autowired
@@ -29,25 +29,26 @@ public class LivrariaController {
     public String getIndex() {
         return "index";
     }
-    @GetMapping("/livraria")
+
+    @GetMapping("/admin/livraria")
     public String getHomeAdmin() {
         return "admin/home";
     }
 
 
-    @GetMapping("/livrof")
+    @GetMapping("/admin/livrof")
     public ModelAndView getLivroF() {
         ModelAndView modelAndView = new ModelAndView("admin/livroficcao");
         modelAndView.addObject("livro",new Livro());
         return modelAndView;
     }
-    @GetMapping("/livrot")
+    @GetMapping("/admin/livrot")
     public ModelAndView getLivroT() {
         ModelAndView modelAndView = new ModelAndView("admin/livrotecnico");
         modelAndView.addObject("autor",new Autor());
         return modelAndView;
     }
-    @GetMapping("/edicao")
+    @GetMapping("/admin/edicao")
     public ModelAndView edicao() {
         Livro livro = new Livro();
         Editora editora = new Editora();
@@ -61,7 +62,7 @@ public class LivrariaController {
 
     @GetMapping("/home")
     public ModelAndView getHome(){
-        ModelAndView modelAndView = new ModelAndView("home");
+        ModelAndView modelAndView = new ModelAndView("cliente/index");
         modelAndView.addObject("edicoes",edicaoRepository.findAll());
         return modelAndView;
     }

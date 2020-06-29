@@ -16,42 +16,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig {
 
-
-    @Configuration
-//    @Order(2)
-    public static class ClienteConfigureAdapter extends WebSecurityConfigurerAdapter{
-        public ClienteConfigureAdapter (){
-            super();
-        }
-        @Autowired
-        private ClienteUserDetailsService clienteUserDetailsService;
-        @Autowired
-        private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-        @Override
-        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.userDetailsService(clienteUserDetailsService).passwordEncoder(bCryptPasswordEncoder);
-        }
-
-        @Override
-        protected void configure(HttpSecurity http) throws Exception{
-            http.csrf().disable()
-                    .authorizeRequests()
-                    .antMatchers("/carrinho").hasRole("USER")
-                    .and().formLogin()
-                    .loginPage("/cliente").loginProcessingUrl("/autent").defaultSuccessUrl("/carrinho").failureUrl("/cliente")
-                    .usernameParameter("cliente").passwordParameter("password")
-                    .and().logout()
-                    .logoutUrl("/logout").logoutSuccessUrl("/cliente");
-//                    .deleteCookies("JSESSIONID")
-//                    .and()
-//                    .exceptionHandling()
-//                    .accessDeniedPage("/403");
-        }
-    }
-
     @Configuration
     @Order(1)
+//    @Order(Ordered.HIGHEST_PRECEDENCE)
     public static class AdminConfigureAdapter extends WebSecurityConfigurerAdapter{
         public AdminConfigureAdapter (){
             super();
@@ -74,9 +41,12 @@ public class SecurityConfig {
                     .authorizeRequests()
                     .anyRequest()
                     .hasRole("ADMIN")
-                    
+
                     .and().formLogin()
-                    .loginPage("/login").loginProcessingUrl("/autenticar").defaultSuccessUrl("/admin/edicao").failureUrl("/login")
+                    .loginPage("/login")
+                    .loginProcessingUrl("/admin/entrar")
+                    .defaultSuccessUrl("/admin/edicao")
+                    .failureUrl("/login")
                     .usernameParameter("login").passwordParameter("senha")
                     .and().logout()
                     .logoutUrl("/logout").logoutSuccessUrl("/login");
@@ -87,6 +57,39 @@ public class SecurityConfig {
 
         }
 
+    }
+
+    @Configuration
+    @Order(2)
+    public static class ClienteConfigureAdapter extends WebSecurityConfigurerAdapter{
+        public ClienteConfigureAdapter (){
+            super();
+        }
+        @Autowired
+        private ClienteUserDetailsService clienteUserDetailsService;
+        @Autowired
+        private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            auth.userDetailsService(clienteUserDetailsService).passwordEncoder(bCryptPasswordEncoder);
+        }
+        @Override
+        protected void configure(HttpSecurity http) throws Exception{
+            http.csrf().disable()
+                    .authorizeRequests()
+                    .antMatchers("/carrinho").hasRole("USER")
+                    .anyRequest().permitAll()
+                    .and().formLogin()
+                    .loginPage("/home").loginProcessingUrl("/autent").defaultSuccessUrl("/carrinho").failureUrl("/cliente")
+                    .usernameParameter("cliente").passwordParameter("password")
+                    .and().logout()
+                    .logoutUrl("/logout").logoutSuccessUrl("/cliente");
+//                    .deleteCookies("JSESSIONID")
+//                    .and()
+//                    .exceptionHandling()
+//                    .accessDeniedPage("/403");
+        }
     }
 
 

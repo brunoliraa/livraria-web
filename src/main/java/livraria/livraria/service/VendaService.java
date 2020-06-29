@@ -1,6 +1,7 @@
 package livraria.livraria.service;
 
 import livraria.livraria.model.CServico;
+import livraria.livraria.model.Cliente;
 import livraria.livraria.model.Edicao;
 import livraria.livraria.model.Venda;
 import livraria.livraria.repository.EdicaoRepository;
@@ -9,6 +10,10 @@ import livraria.livraria.soap.CalcPrecoPrazo;
 import livraria.livraria.soap.CalcPrecoPrazoResponse;
 import livraria.livraria.soapClient.SoapClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +22,7 @@ import org.springframework.ws.soap.client.SoapFaultClientException;
 
 import javax.xml.bind.JAXBException;
 import java.math.BigDecimal;
+import java.security.Security;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +37,8 @@ public class VendaService {
     private SoapClient client;
     @Autowired
     private ConvertXmlToJavaObject convertXmlToJavaObject;
+    @Autowired
+    private ClienteService clienteService;
 
     List<Edicao> edicaoList = new ArrayList<>();
     Venda venda = new Venda();
@@ -39,9 +47,12 @@ public class VendaService {
 
 
     public ModelAndView getCarrinho(){
+
+        Cliente cliente = clienteService.buscarClienteLogado();
         ModelAndView modelAndView = new ModelAndView("carrinho");
         modelAndView.addObject("edicoes", edicaoList);
         modelAndView.addObject("valorTotal", venda.getValorTotal());
+        modelAndView.addObject("cliente", cliente.getNome());
 //        modelAndView.addObject("frete",new CalcPrecoPrazo());
 
         return modelAndView;
@@ -145,6 +156,7 @@ public class VendaService {
         return getCarrinho();
 
     }
+
 
 
 }
