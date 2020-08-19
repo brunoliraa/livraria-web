@@ -40,6 +40,6 @@ public class PaypalConfig {
         return context;
     }
 
-    //ApiContext is deprecated in latest version of paypal
-    //depois tem que ve a nova forma
+//    ApiContext is deprecated in latest version of paypal
+//    depois tem que ve a nova forma
 }

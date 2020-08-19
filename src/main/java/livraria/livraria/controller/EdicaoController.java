@@ -29,7 +29,7 @@ public class EdicaoController {
 
     @GetMapping("/{imagem}")
     @ResponseBody
-    public byte[] findAllEdicao(@PathVariable String imagem, Model model){ //Model model
+    public byte[] findAllEdicao(@PathVariable String imagem, Model model){
         model.addAttribute("edicoes",edicaoRepository.findAll());
         return edicaoService.exibirImagens(imagem);
     }

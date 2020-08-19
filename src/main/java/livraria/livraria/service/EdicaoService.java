@@ -88,20 +88,4 @@ public class EdicaoService {
         return new byte[0];
     }
 
-
-
-
-    //    public ModelAndView save (Edicao edicao,Livro livro){
-//        ModelAndView modelAndView = new ModelAndView("edicao");
-//        Livro l = livroRepository.findLivroById(livro.getId());
-//        edicao.setLivro(l);
-//       try{
-//
-//           edicaoRepository.save(edicao);
-//           modelAndView.addObject("edicoes", edicaoRepository.findAll());
-//       }catch(Exception ex){
-//           ex.printStackTrace();
-//       }
-//        return modelAndView;
-//    }
 }

@@ -142,11 +142,8 @@ public class VendaService {
         CalcPrecoPrazo c = calcPrecoPrazo;
 //        System.out.println(calcPrecoPrazo.getSCepOrigem());
         try{
-            CalcPrecoPrazoResponse d= client.callWebService(c,"http://tempuri.org/CalcPrecoPrazo");
-//            modelAndView.addObject("frete", d);
-//            convertXmlToJavaObject.convert(d);
-            livraria.livraria.model.CalcPrecoPrazoResponse calc =convertXmlToJavaObject.convert(d);
-            System.out.println(calc.getServicos().getValor());
+            CalcPrecoPrazoResponse correios= client.callWebService(c,"http://tempuri.org/CalcPrecoPrazo");
+            correios.getCalcPrecoPrazoResult().getServicos().getCServico().get(0).getValor();
             modelAndView.addObject("edicoes", edicaoList);
             modelAndView.addObject("valorTotal", venda.getValorTotal());
 
